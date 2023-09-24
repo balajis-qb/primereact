@@ -367,7 +367,11 @@ export const FileUpload = React.memo(
             allowDrop && onFileSelect(event);
         };
 
-        const onSimpleUploaderClick = () => {
+        const onSimpleUploaderClick = (e) => {
+            const isLeftMouseClick = e.button === 0;
+
+            if (!isLeftMouseClick) return;
+
             !disabled && hasFiles ? upload() : fileInputRef.current.click();
         };
 
